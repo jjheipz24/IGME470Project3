@@ -1,0 +1,45 @@
+{
+  "name": "project_3",
+  "version": "1.0.0",
+  "description": "Arduino project for igme470",
+  "engines": {
+    "node": "12.9.1",
+    "npm": "6.9.0"
+  },
+  "main": "./server/app.js",
+  "scripts": {
+    "buildMain": "babel ./client/main.jsx --presets @babel/preset-react --out-file ./hosted/mainBundle.js",
+    "build": "npm run buildIndex",
+    "nodemon": "nodemon --watch ./server --watch ./hosted ./server/app.js",
+    "start": "node ./server/app.js",
+    "pretest": "eslint ./server --fix",
+    "test": "echo \"Tests complete\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jjheipz24/IGME470Project3.git"
+  },
+  "author": "Jin Jin Heipler",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/jjheipz24/IGME470Project3/issues"
+  },
+  "homepage": "https://github.com/jjheipz24/IGME470Project3#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.1.0",
+    "eslint-plugin-import": "^2.20.2",
+    "nodemon": "^2.0.3"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "compression": "^1.7.4",
+    "cookie-parser": "^1.4.5",
+    "express": "^4.17.1",
+    "express-handlebars": "^4.0.4",
+    "serialport": "^8.0.7",
+    "serve-favicon": "^2.5.0"
+  }
+}
