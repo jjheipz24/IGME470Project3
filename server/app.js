@@ -46,25 +46,28 @@ const sp = new SerialPort('COM3', {
 
 console.log('Starting up serial host...');
 
-let message = "A=304\n";
-//let message = getMsg();
+//let message = "A=304\n";
 
-function on() {
+function changeNeo(message) {
     sp.open((err) => {
         //console.log(`Writing serial data: ${message}`);
-        sp.write(message, (err, res) => {
-            if (err) {
-                console.log(err);
-            }
-            //sp.close();
-        });
+        if (message != null) {
+            sp.write(message, (err, res) => {
+                if (err) {
+                    console.log(err);
+                }
+                //sp.close();
+            });
+
+        }
+
     });
 }
 
 function off() {
     sp.open((err) => {
         //console.log(`Writing serial data: ${message}`);
-        sp.write("0\n", (err, res) => {
+        sp.write("A=304\n", (err, res) => {
             if (err) {
                 console.log(err);
             }
@@ -73,11 +76,20 @@ function off() {
     });
 }
 
+function changeInterval(message) {
+    changeNeo(message);
+    setInterval(changeNeo, 2000);
+
+}
+
 //setTimeout(on, 1000); // wait 1s for everything to initialize correctly
-setInterval(on, 2000); // write data every X seconds
+//setInterval(changeNeo, 2000); // write data every X seconds
 //setInterval(off, 2000); // write data every X seconds
 
-module.exports = {
-    on: on,
-    off: off
-};
+// module.exports = {
+//     on: on,
+//     off: off,
+// };
+
+module.exports.changeNeo = changeNeo;
+module.exports.changeInterval = changeInterval;
