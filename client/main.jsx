@@ -1,5 +1,5 @@
 let msg;
-//handles requests
+//Sends post requests to server with the messages to send to Arduino
 const sendAjax = (data) => {
     console.log(data);
     $.ajax({
@@ -7,7 +7,7 @@ const sendAjax = (data) => {
         type: 'POST',
         data: data,
         dataType: 'json',
-        success: function(data){
+        success: function (data) {
             console.log(data.msg);
         },
     });
@@ -16,7 +16,7 @@ const sendAjax = (data) => {
 const sendMessage = (e) => {
     e.preventDefault();
 
-    sendAjax({message:"A=203\n"});
+    sendAjax({ message: "A=203\n" });
 
 }
 const Header = () => {
@@ -31,7 +31,7 @@ const Header = () => {
 }
 
 const AnimationButton = () => {
-    return(
+    return (
         <Button name="Pixel Bounce" />
     )
 }

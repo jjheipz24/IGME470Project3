@@ -40,15 +40,15 @@ app.listen(port, (err) => {
     console.log(`Listening on port ${port}`);
 });
 
+//Connects to the serial port for the Arduino
 const sp = new SerialPort('COM3', {
     baudrate: config.baudRate,
 }, false);
 
 console.log('Starting up serial host...');
 
-//let message = "A=304\n";
-
-function changeNeo(message) {
+//Writes to the serial monitor of the arduino
+function writeSerial(message) {
     sp.open((err) => {
         //console.log(`Writing serial data: ${message}`);
         if (message != null) {
@@ -64,32 +64,14 @@ function changeNeo(message) {
     });
 }
 
-function off() {
-    sp.open((err) => {
-        //console.log(`Writing serial data: ${message}`);
-        sp.write("A=304\n", (err, res) => {
-            if (err) {
-                console.log(err);
-            }
-            //sp.close();
-        });
-    });
-}
-
-function changeInterval(message) {
-    changeNeo(message);
-    setInterval(changeNeo, 2000);
-
+//Gets called to initiate changes to neopixel
+function changeNeopixel(message) {
+    writeSerial(message);
+    setInterval(writeSerial, 2000);
 }
 
 //setTimeout(on, 1000); // wait 1s for everything to initialize correctly
 //setInterval(changeNeo, 2000); // write data every X seconds
-//setInterval(off, 2000); // write data every X seconds
 
-// module.exports = {
-//     on: on,
-//     off: off,
-// };
-
-module.exports.changeNeo = changeNeo;
-module.exports.changeInterval = changeInterval;
+module.exports.changeNeopixel = changeNeopixel;
+module.exports.writeSerial = writeSerial;
