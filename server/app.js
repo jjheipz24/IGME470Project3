@@ -5,6 +5,9 @@ const compression = require('compression');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const expressHandlebars = require('express-handlebars');
+// const {
+//     getMsg
+// } = require('../client/main.jsx');
 
 const SerialPort = require('serialport');
 const config = require('../config.js');
@@ -43,7 +46,8 @@ const sp = new SerialPort('COM3', {
 
 console.log('Starting up serial host...');
 
-const message = "A=304\n";
+let message = "A=304\n";
+//let message = getMsg();
 
 function on() {
     sp.open((err) => {
