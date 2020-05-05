@@ -8,8 +8,8 @@
   },
   "main": "./server/app.js",
   "scripts": {
-    "buildMain": "babel ./client/main.jsx --presets @babel/preset-react --out-file ./hosted/mainBundle.js",
-    "build": "npm run buildIndex",
+    "buildMain": "babel ./client/main.jsx --presets react --out-file ./hosted/mainBundle.js",
+    "build": "npm run buildMain",
     "nodemon": "nodemon --watch ./server --watch ./hosted ./server/app.js",
     "start": "node ./server/app.js",
     "pretest": "eslint ./server --fix",
@@ -28,6 +28,7 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.1.0",
     "eslint-plugin-import": "^2.20.2",
