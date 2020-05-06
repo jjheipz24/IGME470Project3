@@ -1,5 +1,7 @@
 'use strict';
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 var msg = void 0;
 //Sends post requests to server with the messages to send to Arduino
 var sendAjax = function sendAjax(data) {
@@ -41,16 +43,28 @@ var Header = function Header() {
 var OnOffButtons = function OnOffButtons() {
     return React.createElement(
         'div',
-        { className: 'power-buttons' },
+        { id: 'power-buttons' },
         React.createElement(Button, { className: 'pwr', name: 'On', msg: 'A=101\\n' }),
         React.createElement(Button, { className: 'pwr', name: 'Off', msg: 'A=102\\n' })
+    );
+};
+
+var BrightnessBar = function BrightnessBar() {
+    return React.createElement(
+        'div',
+        { id: 'b-bar' },
+        React.createElement(Button, { className: 'bright', name: '20%', msg: 'B=8\\n' }),
+        React.createElement(Button, { className: 'bright', name: '40%', msg: 'B=16\\n' }),
+        React.createElement(Button, { className: 'bright', name: '60%', msg: 'B=32\\n' }),
+        React.createElement(Button, { className: 'bright', name: '80%', msg: 'B=64\\n' }),
+        React.createElement(Button, { className: 'bright', name: '100%', msg: 'B=100\\n' })
     );
 };
 
 var ColorPickerGrid = function ColorPickerGrid() {
     return React.createElement(
         'div',
-        { className: 'colors-container' },
+        { id: 'colors-container' },
         React.createElement(
             'h3',
             null,
@@ -89,10 +103,29 @@ var Button = function Button(props) {
     );
 };
 
+var Radio = function Radio(props) {
+    var _React$createElement;
+
+    var name = props.name;
+    var msg = props.msg;
+
+    return React.createElement(
+        'div',
+        null,
+        React.createElement('input', (_React$createElement = { type: 'radio', className: props.className, id: props.id, value: props.value }, _defineProperty(_React$createElement, 'value', name), _defineProperty(_React$createElement, 'onChange', function onChange() {
+            return sendMessage(msg);
+        }), _React$createElement)),
+        ' ',
+        name
+    );
+};
+
 var setup = function setup() {
     ReactDOM.render(React.createElement(Header, null), document.querySelector('#header'));
 
     ReactDOM.render(React.createElement(OnOffButtons, null), document.querySelector('#on-off'));
+
+    ReactDOM.render(React.createElement(BrightnessBar, null), document.querySelector('#brightness'));
 
     ReactDOM.render(React.createElement(ColorPickerGrid, null), document.querySelector('#colors'));
 };

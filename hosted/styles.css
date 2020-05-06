@@ -2,6 +2,10 @@
     color: purple;
 }
 
+#b-bar{
+    display: flex;
+    flex-direction: row;
+}
 .color-grid {
     display: grid;
     width: 150px;

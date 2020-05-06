@@ -31,16 +31,28 @@ const Header = () => {
 //Power buttons
 const OnOffButtons = () => {
     return (
-        <div className="power-buttons">
+        <div id="power-buttons">
             <Button className="pwr" name="On" msg="A=101\n" />
             <Button className="pwr" name="Off" msg="A=102\n" />
         </div>
     )
 }
 
+const BrightnessBar = () => {
+    return (
+        <div id="b-bar">
+            <Button className="bright" name="20%" msg="B=8\n" />
+            <Button className="bright" name="40%" msg="B=16\n" />
+            <Button className="bright" name="60%" msg="B=32\n" />
+            <Button className="bright" name="80%" msg="B=64\n" />
+            <Button className="bright" name="100%" msg="B=100\n" />
+        </div>
+    )
+}
+
 const ColorPickerGrid = () => {
     return (
-        <div className='colors-container'>
+        <div id='colors-container'>
             <h3>Colors</h3>
             <div className="color-grid">
                 <Button className="color-btn" id="red-btn" msg="C=EF4050" />
@@ -69,6 +81,17 @@ const Button = (props) => {
     )
 };
 
+const Radio = (props) => {
+    let name = props.name;
+    let msg = props.msg;
+
+    return (
+        <div>
+            <input type="radio" className={props.className} id={props.id} value={props.value} value={name} onChange={() => sendMessage(msg)} /> {name}
+        </div>
+    )
+}
+
 
 const setup = () => {
     ReactDOM.render(
@@ -77,6 +100,10 @@ const setup = () => {
 
     ReactDOM.render(
         <OnOffButtons />, document.querySelector('#on-off')
+    );
+
+    ReactDOM.render(
+        <BrightnessBar />, document.querySelector('#brightness')
     );
 
     ReactDOM.render(
