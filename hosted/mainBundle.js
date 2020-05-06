@@ -50,12 +50,21 @@ var OnOff = function OnOff() {
 var BrightnessBar = function BrightnessBar() {
     return React.createElement(
         'div',
-        { id: 'b-bar' },
-        React.createElement(Button, { className: 'bright-btn', name: '20%', msg: 'B=8\\n' }),
-        React.createElement(Button, { className: 'bright-btn', name: '40%', msg: 'B=16\\n' }),
-        React.createElement(Button, { className: 'bright-btn', name: '60%', msg: 'B=32\\n' }),
-        React.createElement(Button, { className: 'bright-btn', name: '80%', msg: 'B=64\\n' }),
-        React.createElement(Button, { className: 'bright-btn', name: '100%', msg: 'B=100\\n' })
+        { id: 'brightness-container' },
+        React.createElement(
+            'h3',
+            null,
+            'Brightness'
+        ),
+        React.createElement(
+            'div',
+            { id: 'b-bar' },
+            React.createElement(Button, { className: 'bright-btn', name: '20%', msg: 'B=8\\n' }),
+            React.createElement(Button, { className: 'bright-btn', name: '40%', msg: 'B=16\\n' }),
+            React.createElement(Button, { className: 'bright-btn', name: '60%', msg: 'B=32\\n' }),
+            React.createElement(Button, { className: 'bright-btn', name: '80%', msg: 'B=64\\n' }),
+            React.createElement(Button, { className: 'bright-btn', name: '100%', msg: 'B=100\\n' })
+        )
     );
 };
 
@@ -118,14 +127,23 @@ var ColorPickerGrid = function ColorPickerGrid() {
 var PaletteBar = function PaletteBar() {
     return React.createElement(
         'div',
-        { id: 'p-bar' },
-        React.createElement(Radio, { className: 'palette-btn', name: 'palette', value: 'None', msg: 'P=0\\n' }),
-        React.createElement(Radio, { className: 'palette-btn', name: 'palette', value: 'RGB', msg: 'P=1\\n' }),
-        React.createElement(Radio, { className: 'palette-btn', name: 'palette', value: 'Rainbow', msg: 'P=2\\n' }),
-        React.createElement(Radio, { className: 'palette-btn', name: 'palette', value: 'Party', msg: 'P=3\\n' }),
-        React.createElement(Radio, { className: 'palette-btn', name: 'palette', value: 'Heat', msg: 'P=4\\n' }),
-        React.createElement(Radio, { className: 'palette-btn', name: 'palette', value: 'Fire', msg: 'P=5\\n' }),
-        React.createElement(Radio, { className: 'palette-btn', name: 'palette', value: 'Cool', msg: 'P=6\\n' })
+        { id: 'palette-container' },
+        React.createElement(
+            'h3',
+            null,
+            'Palette'
+        ),
+        React.createElement(
+            'div',
+            { id: 'p-bar' },
+            React.createElement(Radio, { className: 'palette-btn', name: 'palette', value: 'None', msg: 'P=0\\n' }),
+            React.createElement(Radio, { className: 'palette-btn', name: 'palette', value: 'RGB', msg: 'P=1\\n' }),
+            React.createElement(Radio, { className: 'palette-btn', name: 'palette', value: 'Rainbow', msg: 'P=2\\n' }),
+            React.createElement(Radio, { className: 'palette-btn', name: 'palette', value: 'Party', msg: 'P=3\\n' }),
+            React.createElement(Radio, { className: 'palette-btn', name: 'palette', value: 'Heat', msg: 'P=4\\n' }),
+            React.createElement(Radio, { className: 'palette-btn', name: 'palette', value: 'Fire', msg: 'P=5\\n' }),
+            React.createElement(Radio, { className: 'palette-btn', name: 'palette', value: 'Cool', msg: 'P=6\\n' })
+        )
     );
 };
 

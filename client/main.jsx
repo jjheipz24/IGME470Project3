@@ -40,12 +40,15 @@ const OnOff = () => {
 
 const BrightnessBar = () => {
     return (
-        <div id="b-bar">
-            <Button className="bright-btn" name="20%" msg="B=8\n" />
-            <Button className="bright-btn" name="40%" msg="B=16\n" />
-            <Button className="bright-btn" name="60%" msg="B=32\n" />
-            <Button className="bright-btn" name="80%" msg="B=64\n" />
-            <Button className="bright-btn" name="100%" msg="B=100\n" />
+        <div id="brightness-container">
+            <h3>Brightness</h3>
+            <div id="b-bar">
+                <Button className="bright-btn" name="20%" msg="B=8\n" />
+                <Button className="bright-btn" name="40%" msg="B=16\n" />
+                <Button className="bright-btn" name="60%" msg="B=32\n" />
+                <Button className="bright-btn" name="80%" msg="B=64\n" />
+                <Button className="bright-btn" name="100%" msg="B=100\n" />
+            </div>
         </div>
     )
 }
@@ -100,14 +103,17 @@ const ColorPickerGrid = () => {
 
 const PaletteBar = () => {
     return (
-        <div id="p-bar">
-            <Radio className="palette-btn" name="palette" value="None" msg="P=0\n" />
-            <Radio className="palette-btn" name="palette" value="RGB" msg="P=1\n" />
-            <Radio className="palette-btn" name="palette" value="Rainbow" msg="P=2\n" />
-            <Radio className="palette-btn" name="palette" value="Party" msg="P=3\n" />
-            <Radio className="palette-btn" name="palette" value="Heat" msg="P=4\n" />
-            <Radio className="palette-btn" name="palette" value="Fire" msg="P=5\n" />
-            <Radio className="palette-btn" name="palette" value="Cool" msg="P=6\n" />
+        <div id="palette-container">
+            <h3>Palette</h3>
+            <div id="p-bar">
+                <Radio className="palette-btn" name="palette" value="None" msg="P=0\n" />
+                <Radio className="palette-btn" name="palette" value="RGB" msg="P=1\n" />
+                <Radio className="palette-btn" name="palette" value="Rainbow" msg="P=2\n" />
+                <Radio className="palette-btn" name="palette" value="Party" msg="P=3\n" />
+                <Radio className="palette-btn" name="palette" value="Heat" msg="P=4\n" />
+                <Radio className="palette-btn" name="palette" value="Fire" msg="P=5\n" />
+                <Radio className="palette-btn" name="palette" value="Cool" msg="P=6\n" />
+            </div>
         </div>
     )
 }
