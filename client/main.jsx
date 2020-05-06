@@ -29,11 +29,11 @@ const Header = () => {
 }
 
 //Power buttons
-const OnOffButtons = () => {
+const OnOff = () => {
     return (
-        <div id="power-buttons">
-            <Button className="pwr" name="On" msg="A=101\n" />
-            <Button className="pwr" name="Off" msg="A=102\n" />
+        <div id="power">
+            <Radio className="pwr-btn" name="pwr" value="On" msg="A=101\n" />
+            <Radio className="pwr-btn" name="pwr" value="Off" msg="A=102\n" />
         </div>
     )
 }
@@ -41,11 +41,40 @@ const OnOffButtons = () => {
 const BrightnessBar = () => {
     return (
         <div id="b-bar">
-            <Button className="bright" name="20%" msg="B=8\n" />
-            <Button className="bright" name="40%" msg="B=16\n" />
-            <Button className="bright" name="60%" msg="B=32\n" />
-            <Button className="bright" name="80%" msg="B=64\n" />
-            <Button className="bright" name="100%" msg="B=100\n" />
+            <Button className="bright-btn" name="20%" msg="B=8\n" />
+            <Button className="bright-btn" name="40%" msg="B=16\n" />
+            <Button className="bright-btn" name="60%" msg="B=32\n" />
+            <Button className="bright-btn" name="80%" msg="B=64\n" />
+            <Button className="bright-btn" name="100%" msg="B=100\n" />
+        </div>
+    )
+}
+
+const AnimationGrid = () => {
+    return (
+        <div id="animation-container">
+            <h3>Animations</h3>
+            <div id="animation-grid">
+                <Button className="animation-btn" name="Blink" msg="A=103\n" />
+                <Button className="animation-btn" name="Sparkle" msg="A=105" />
+                <Button className="animation-btn" name="Strobe" msg="A=107" />
+                <Button className="animation-btn" name="Cycle" msg="A=151" />
+
+                <Button className="animation-btn" name="Shift R" msg="A=201" />
+                <Button className="animation-btn" name="Shift L" msg="A=202" />
+                <Button className="animation-btn" name="Smooth Shift R" msg="A=211" />
+                <Button className="animation-btn" name="Smooth Shift L" msg="A=212" />
+
+                <Button className="animation-btn" name="Bounce" msg="A=203" />
+                <Button className="animation-btn" name="Smooth Bounce" msg="A=213" />
+                <Button className="animation-btn" name="Comet" msg="A=221" />
+                <Button className="animation-btn" name="Glow" msg="A=304" />
+
+                <Button className="animation-btn" name="Bars" msg="A=241" />
+                <Button className="animation-btn" name="Gradient" msg="A=242" />
+                <Button className="animation-btn" name="Larson Scanner" msg="A=251" />
+                <Button className="animation-btn" name="Bubbles" msg="A=503" />
+            </div>
         </div>
     )
 }
@@ -54,7 +83,7 @@ const ColorPickerGrid = () => {
     return (
         <div id='colors-container'>
             <h3>Colors</h3>
-            <div className="color-grid">
+            <div id="color-grid">
                 <Button className="color-btn" id="red-btn" msg="C=EF4050" />
                 <Button className="color-btn" id="orange-btn" msg="C=F78545" />
                 <Button className="color-btn" id="yellow-btn" msg="C=FFD700" />
@@ -65,6 +94,20 @@ const ColorPickerGrid = () => {
                 <Button className="color-btn" id="white-btn" msg="C=FFFFFF" />
 
             </div>
+        </div>
+    )
+}
+
+const PaletteBar = () => {
+    return (
+        <div id="p-bar">
+            <Radio className="palette-btn" name="palette" value="None" msg="P=0\n" />
+            <Radio className="palette-btn" name="palette" value="RGB" msg="P=1\n" />
+            <Radio className="palette-btn" name="palette" value="Rainbow" msg="P=2\n" />
+            <Radio className="palette-btn" name="palette" value="Party" msg="P=3\n" />
+            <Radio className="palette-btn" name="palette" value="Heat" msg="P=4\n" />
+            <Radio className="palette-btn" name="palette" value="Fire" msg="P=5\n" />
+            <Radio className="palette-btn" name="palette" value="Cool" msg="P=6\n" />
         </div>
     )
 }
@@ -81,13 +124,15 @@ const Button = (props) => {
     )
 };
 
+//Creates a radio button
 const Radio = (props) => {
-    let name = props.name;
+    let value = props.value;
     let msg = props.msg;
 
     return (
         <div>
-            <input type="radio" className={props.className} id={props.id} value={props.value} value={name} onChange={() => sendMessage(msg)} /> {name}
+            <input type="radio" className={props.className} id={props.id} name={props.name} value={value} onChange={() => sendMessage(msg)} />
+            <label>{value}</label>
         </div>
     )
 }
@@ -99,7 +144,7 @@ const setup = () => {
     );
 
     ReactDOM.render(
-        <OnOffButtons />, document.querySelector('#on-off')
+        <OnOff />, document.querySelector('#on-off')
     );
 
     ReactDOM.render(
@@ -107,7 +152,14 @@ const setup = () => {
     );
 
     ReactDOM.render(
+        <AnimationGrid />, document.querySelector('#animation')
+    );
+    ReactDOM.render(
         <ColorPickerGrid />, document.querySelector('#colors')
+    );
+
+    ReactDOM.render(
+        <PaletteBar />, document.querySelector('#palette')
     );
 
 };
