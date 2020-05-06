@@ -10,7 +10,8 @@
   "scripts": {
     "buildMain": "babel ./client/main.jsx --presets react --out-file ./hosted/mainBundle.js",
     "build": "npm run buildMain",
-    "nodemon": "nodemon --watch ./server --watch ./hosted ./server/app.js",
+    "watch": "babel --watch ./client --out-file ./hosted/mainBundle.js",
+    "nodemon": "nodemon -e js,handlebars,css --watch ./server ./server/app.js",
     "start": "node ./server/app.js",
     "pretest": "eslint ./server --fix",
     "test": "echo \"Tests complete\""

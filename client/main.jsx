@@ -13,48 +13,62 @@ const sendAjax = (data) => {
     });
 }
 
-const sendMessage = (e) => {
-    e.preventDefault();
+const sendMessage = (msg) => {
+    //e.preventDefault();
 
-    sendAjax({ message: "A=203\n" });
+    sendAjax({ message: msg });
 
 }
 const Header = () => {
     return (
-        <div>
-            <header>
-                <h1 id="pageTitle">Neopixel Controller</h1>
-                <p>Control the neopixel right here on the web!</p>
-            </header>
+        <header>
+            <h1 id="pageTitle">Neopixel Controller</h1>
+            <p>Control the neopixel right here on the web!</p>
+        </header>
+    )
+}
+
+//Power buttons
+const OnOffButtons = () => {
+    return (
+        <div className="power-buttons">
+            <Button className="pwr" name="On" msg="A=101\n" />
+            <Button className="pwr" name="Off" msg="A=102\n" />
         </div>
     )
 }
 
-const AnimationButton = () => {
+const ColorPickerGrid = () => {
     return (
-        <Button name="Pixel Bounce" />
+        <div className='colors-container'>
+            <h3>Colors</h3>
+            <div className="color-grid">
+                <Button className="color-btn" id="red-btn" msg="C=EF4050" />
+                <Button className="color-btn" id="orange-btn" msg="C=F78545" />
+                <Button className="color-btn" id="yellow-btn" msg="C=FFD700" />
+                <Button className="color-btn" id="green-btn" msg="C=8AC926" />
+                <Button className="color-btn" id="blue-btn" msg="C=1982C4" />
+                <Button className="color-btn" id="pink-btn" msg="C=DE00ED" />
+                <Button className="color-btn" id="purple-btn" msg="C=371263" />
+                <Button className="color-btn" id="white-btn" msg="C=FFFFFF" />
+
+            </div>
+        </div>
     )
 }
 
+//Creates a button
 const Button = (props) => {
     let name = props.name;
+    let msg = props.msg;
     //let msg = props.msg;
     return (
         <div>
-            <button onClick={sendMessage}>{name}</button>
+            <button type="button" className={props.className} id={props.id} onClick={() => sendMessage(msg)}>{name}</button>
         </div>
     )
 };
 
-// const BrightnessButton = () => {
-
-//     return (
-//         <div>
-//             <button type="submit" onClick={handleInput}>Click</button>
-//         </div>
-//     )
-
-// };
 
 const setup = () => {
     ReactDOM.render(
@@ -62,12 +76,13 @@ const setup = () => {
     );
 
     ReactDOM.render(
-        <AnimationButton />, document.querySelector('#btn')
-    )
+        <OnOffButtons />, document.querySelector('#on-off')
+    );
 
-    // ReactDOM.render(
-    //     <BrightnessButton />, document.querySelector('#btn')
-    // );
+    ReactDOM.render(
+        <ColorPickerGrid />, document.querySelector('#colors')
+    );
+
 };
 
 $(document).ready(function () {
